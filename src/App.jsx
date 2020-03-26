@@ -1,46 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import withFirebaseAuth from 'react-with-firebase-auth';
-import CookieConsent from 'react-cookie-consent';
-import ScrollUpButton from 'react-scroll-up-button';
 import MenuIcon from '@material-ui/icons/Menu';
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import CookieConsent from 'react-cookie-consent';
 import { useTranslation } from 'react-i18next';
-import Main from './views/Main';
-import OfferHelp from './views/OfferHelp';
-import Dashboard from './views/Dashboard';
-import FAQ from './views/FAQ';
-import Impressum from './views/Impressum';
-import Signup from './views/Signup';
-import AskForHelp from './views/AskForHelp';
-import Overview from './views/Overview';
-import Success from './views/Success';
-import fb from './firebase';
-import SuccessOffer from './views/SuccessOffer';
-import DSGVO from './views/DSGVO';
-import Sidebar from './components/Sidebar';
+import { HashRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import ScrollUpButton from 'react-scroll-up-button';
+import withFirebaseAuth from 'react-with-firebase-auth';
 import DesktopMenu from './components/DesktopMenu';
-import VerifyEmail from './views/VerifyEmail';
-import CompleteOfferHelp from './views/CompleteOfferHelp';
-import NotifyMe from './views/NotifyMe';
 import ScrollToTop from './components/ScrollToTop';
 import ShareButtons from './components/ShareButtons';
-import Presse from './views/Presse';
+import Sidebar from './components/Sidebar';
+import fb from './firebase';
 import createEventListener from './util/createEventListener';
+import AskForHelp from './views/AskForHelp';
+import CompleteOfferHelp from './views/CompleteOfferHelp';
+import Dashboard from './views/Dashboard';
+import DSGVO from './views/DSGVO';
+import FAQ from './views/FAQ';
+import Impressum from './views/Impressum';
+import Main from './views/Main';
+import NotFound from './views/NotFound';
+import NotifyMe from './views/NotifyMe';
+import OfferHelp from './views/OfferHelp';
+import Overview from './views/Overview';
+import Presse from './views/Presse';
 import Security from './views/Security';
+import Signup from './views/Signup';
+import Success from './views/Success';
+import SuccessOffer from './views/SuccessOffer';
+import VerifyEmail from './views/VerifyEmail';
 
 function App(props) {
   const { t } = useTranslation();
 
-  const {
-    user,
-    signOut,
-  } = props;
-
+  const { user, signOut } = props;
 
   const addListener = () => {
     fb.analytics = fb.app.analytics();
@@ -66,30 +58,70 @@ function App(props) {
     <div className="flex items-center min-h-screen flex-col bg-kaki">
       <Router>
         <div className="hidden md:flex justify-end md:mt-12 w-full phone-width items-center">
-          {!user
-          && <Link className="mr-6 font-open-sans text-gray-700" to="/signup/dashboard">{t('App.login')}</Link>}
+          {!user && (
+            <Link
+              className="mr-6 font-open-sans text-gray-700"
+              to="/signup/dashboard"
+            >
+              {t('App.login')}
+            </Link>
+          )}
           {user && (
             <>
-              <Link className="mr-6 font-open-sans text-gray-700" to="/dashboard">{t('components.desktopMenu.myOverview')}</Link>
-              <button type="button" className="mr-4 font-open-sans text-gray-700" to="#" onClick={signOut}>{t('components.desktopMenu.signOut')}</button>
+              <Link
+                className="mr-6 font-open-sans text-gray-700"
+                to="/dashboard"
+              >
+                {t('components.desktopMenu.myOverview')}
+              </Link>
+              <button
+                type="button"
+                className="mr-4 font-open-sans text-gray-700"
+                to="#"
+                onClick={signOut}
+              >
+                {t('components.desktopMenu.signOut')}
+              </button>
             </>
           )}
-          <Link className="mr-6 font-open-sans text-gray-700" to="/presse">{t('App.press')}</Link>
+          <Link className="mr-6 font-open-sans text-gray-700" to="/presse">
+            {t('App.press')}
+          </Link>
           <ShareButtons />
         </div>
         <div className="phone-width bg-white shadow-xl min-h-screen md:mt-6">
           <ScrollToTop />
           <DesktopMenu isLoggedIn={user} signOut={signOut} />
           <div className="md:px-16 overflow-hidden">
-            <div style={{ zIndex: 101 }} className="visible md:invisible h-16 w-full fixed top-0 bg-white flex flex-row justify-between w-full items-center pr-5">
-              <Link to="/" className="font-main ml-4" style={{ fontWeight: '600' }}>
-                <img alt="logo" src={require('./assets/logo_invert.svg')} className="h-10" />
+            <div
+              style={{ zIndex: 101 }}
+              className="visible md:invisible h-16 w-full fixed top-0 bg-white flex flex-row justify-between w-full items-center pr-5"
+            >
+              <Link
+                to="/"
+                className="font-main ml-4"
+                style={{ fontWeight: '600' }}
+              >
+                <img
+                  alt="logo"
+                  src={require('./assets/logo_invert.svg')}
+                  className="h-10"
+                />
               </Link>
               <div>
-                <MenuIcon style={{ fontSize: '40px' }} className="text-gray-600" onClick={() => setMenuOpen(true)} />
+                <MenuIcon
+                  style={{ fontSize: '40px' }}
+                  className="text-gray-600"
+                  onClick={() => setMenuOpen(true)}
+                />
               </div>
             </div>
-            <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} isLoggedIn={user} signOut={signOut} />
+            <Sidebar
+              open={menuOpen}
+              onClose={() => setMenuOpen(false)}
+              isLoggedIn={user}
+              signOut={signOut}
+            />
             <div className="mt-20 md:mt-0">
               <Switch>
                 <Route path="/offer-help/:id">
@@ -140,15 +172,20 @@ function App(props) {
                 <Route path="/complete-offer-help">
                   <CompleteOfferHelp />
                 </Route>
-                <Route path="/">
+                <Route exact path="/">
                   <Main />
                 </Route>
+                <Route component={NotFound} />
               </Switch>
               <ScrollUpButton
                 ContainerClassName="scroll-up-btn"
                 TransitionClassName="scroll-up-btn-fade"
               >
-                <img alt="arrow-down" className="arrow-down" src={require('./assets/arrows_up.svg')} />
+                <img
+                  alt="arrow-down"
+                  className="arrow-down"
+                  src={require('./assets/arrows_up.svg')}
+                />
               </ScrollUpButton>
             </div>
           </div>

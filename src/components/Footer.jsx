@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 export default function Footer() {
   const { t } = useTranslation();
   return (
-    <div>
+    <div className="mx-3">
       <div className="flex justify-center text-sm text-gray-700 mb-4 mt-8 w-full">
         <Link to="/faq">{t('components.footer.FAQs')}</Link>
         <div className="mx-1">|</div>

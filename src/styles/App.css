@@ -1,101 +1,115 @@
 .phone-width {
-    width: 100%;
-    max-width: 800px;
+  width: 100%;
+  max-width: 800px;
 }
 
 .font-main {
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 800;
-    font-size: 29px;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 800;
+  font-size: 29px;
 }
 
 .font-exo2 {
-    font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
 }
 
 .font-teaser {
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 600;
-    line-height: 1.40;
-    color: #222;
-    font-size: 24px;
+  font-family: "Exo 2", sans-serif;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #222;
+  font-size: 24px;
 }
 
 .btn-main {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    font-stretch: condensed;
-    letter-spacing: 0;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: condensed;
+  letter-spacing: 0;
 }
 
 .btn-gray {
-    color: #777777;
-    background-color: #eeeeee;
+  color: #777777;
+  background-color: #eeeeee;
 }
 
 .font-open-sans {
-    font-family: 'Open Sans', sans-serif;
-    letter-spacing: 0;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0;
 }
 
 .angle-cut-background {
-    background: #f9f7f0;
-    position: relative;
+  background: #f9f7f0;
+  position: relative;
 }
 @media (min-width: 835px) {
-    .angle-cut-background {
-        background: white;
-    }
+  .angle-cut-background {
+    background: white;
+  }
 }
 .angle-cut-background::before {
-    position:absolute;
-    content: " ";
-    display:block;
-    left:0;
-    top:0;
-    width:100%;
-    border-style: solid;
-    border-width: 30px 100vw 0 0;
-    border-color: white transparent transparent transparent;
+  position: absolute;
+  content: " ";
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-style: solid;
+  border-width: 30px 100vw 0 0;
+  border-color: white transparent transparent transparent;
 }
 
 .max-w-360 {
-    max-width: 360px;
+  max-width: 360px;
 }
 
 .bg-kaki {
-    background-color: #f9f7f0;
+  background-color: #f9f7f0;
 }
 .logo-margin {
-    margin-left: -30px;
+  margin-left: -30px;
 }
 
 .entry {
-    transition: 300ms;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  transition: 300ms;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .entry:hover {
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .response {
-    background: #efefef;
+  background: #efefef;
 }
 
 .response:first-child::before {
-    content: " ";
-    position: absolute;
-    top: -14px;
-    left: 128px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 14px 14px 14px;
-    border-color: transparent transparent #efefef transparent;
+  content: " ";
+  position: absolute;
+  top: -14px;
+  left: 128px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 14px 14px 14px;
+  border-color: transparent transparent #efefef transparent;
 }
 
 .bg-white-75 {
-    background-color: rgba(255, 255, 255, 0.75)
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.one-third-underline {
+  position: relative;
+  display: inline-block;
+}
+.one-third-underline::after {
+  content: "";
+  width: 30%;
+  bottom: -6px;
+  left: 0;
+  height: 3px;
+  background: #b6223e;
+  position: absolute;
 }
